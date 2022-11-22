@@ -17,7 +17,7 @@ cool right? no? well too bad!
 
 if you want to use it for recording videos/streaming make sure to chroma key out the pink and it should work fine :)
 
-hotkeys for icons coming tm
+hotkeys for icons coming soon tm
 
 TODO:
 - line break automatically
