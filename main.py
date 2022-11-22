@@ -47,7 +47,7 @@ while running:
     if recognizer.AcceptWaveform(data):
         text2 = recognizer.Result()
         print(f"' {text2[14:-3]} '")
-        z = "*" + f" {text2[14:-3]} "
+        z = "*" + f" {text2[14:-3]} " 
 
 
     for event in pygame.event.get():  
