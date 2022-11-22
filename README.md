@@ -12,5 +12,6 @@ hotkeys for icons coming tm
 
 TODO:
 - line break automatically
+- little sound for the dialog per letter like in game
 - hotkeys to change icons
 - polish
