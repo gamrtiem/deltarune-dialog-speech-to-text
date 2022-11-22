@@ -9,11 +9,11 @@ pygame.display.set_mode((x,y))
 scrn = pygame.display.set_mode((x, y))
 	
 
-imp = pygame.image.load("C:\\Users\\among us\\Documents\\GitHub\\deltarune-dialog-speech-to-text\\images\\dialog.png").convert()
+imp = pygame.image.load("images\\dialog.png").convert()
 scrn.blit(imp, (0, 0))
 
 
-font_1 = pygame.font.Font("C:\\Users\\among us\\Documents\\GitHub\\deltarune-dialog-speech-to-text\\font\\determinationsansweb-webfont.ttf", 20)
+font_1 = pygame.font.Font("font\\determinationsansweb-webfont.ttf", 20)
 text = font_1.render("Hello world!", True, (255, 255, 255))
 
 pygame.display.flip()
