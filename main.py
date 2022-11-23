@@ -83,17 +83,7 @@ while running:
     blist = list(b)
     alist = list(a)
 
-
-
-
-    for i in range(len(z)):
-        if i > 25:
-            blist.append(z[i])
-            if i > 50:
-                del zlist[i]
-            
-            
-
+           
 
     if not change == zlist:
         scrn.blit(dialog, (0, 0))
