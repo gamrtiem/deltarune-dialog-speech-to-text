@@ -1,3 +1,4 @@
+from pygame import mixer
 from vosk import Model, KaldiRecognizer
 import pyaudio
 import pygame
@@ -6,7 +7,7 @@ pygame.init()
 
 x = 1334
 y = 376
-z = "hellow rosld"
+z = "hellow \n rosld"
 linebreak = 0
 n = "* "
 b = ""
@@ -36,6 +37,9 @@ mic = pyaudio.PyAudio()
 stream = mic.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=8192)
 stream.start_stream()
     
+mixer.init()
+mixer.music.load("images\\ralsei_snd.wav")
+mixer.music.set_volume(0.7)
 
 
 g = 0 
@@ -61,9 +65,11 @@ while running:
            scrn.blit(text, (337,64))
            print(k)
            pygame.display.update()
+           mixer.music.play()
            count += 1
            time.sleep(0.05)
-    
+           mylist = z.split()
+           del mylist[1]
 
 
     
