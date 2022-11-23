@@ -62,7 +62,10 @@ while running:
            k = k + sentence[count]
            o = k
            text = font_1.render(o, False, (255, 255, 255))
-           scrn.blit(text, (337,64))
+           if dialogs == 1:
+             scrn.blit(text, (337,64))
+           if dialogs == 2:
+             scrn.blit(text, (337,164))
            print(k)
            pygame.display.update()
            mixer.music.play()
@@ -70,34 +73,38 @@ while running:
            time.sleep(0.05)
            mylist = z.split()
            del mylist[1]
-
-
-    
-
-    g = 0
-    if g == 0:
-        
-        g = 1
+           
+        k = ""
+        o = ""
 
     scrn.blit(portrait, (74, 86))
 
-        
+    zlist = list(z)
+    blist = list(b)
+    alist = list(a)
 
-  #  for i in range(0, len(z) - 2):
-  #      if i > 25 and not i > 50:
-  #          b[i - 24] = z[i]
-  #          if i > 50 and not i > 75:
-  #              a[i - 49] = z[i]
-  #              if i > 75 and not i > 100:
-  #                  z[i] = " "
-  #          z[i] = " "
-    if not change == z:
+
+
+
+    for i in range(len(z)):
+        if i > 25:
+            blist.append(z[i])
+            if i > 50:
+                del zlist[i]
+            
+            
+
+
+    if not change == zlist:
         scrn.blit(dialog, (0, 0))
         scrn.blit(portrait, (74, 86))
-        print_string(z)
-        print_string(b)
-        print_string(a)
-        change = z
+        dialogs = 1
+        print_string(zlist)
+        dialogs = 2
+        print_string(blist)
+        dialogs = 3
+        print_string(alist)
+        change = zlist
 
 
     
