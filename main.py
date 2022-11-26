@@ -7,7 +7,7 @@ pygame.init()
 
 x = 1334
 y = 376
-z = "hellow \n rosld"
+z = "123456789012345678901234567890"
 linebreak = 0
 n = "* "
 b = ""
@@ -70,9 +70,9 @@ while running:
            pygame.display.update()
            mixer.music.play()
            count += 1
-           time.sleep(0.05)
-           mylist = z.split()
-           del mylist[1]
+           time.sleep(0.04)
+           #mylist = z.split()
+           #del mylist[1]
            
         k = ""
         o = ""
@@ -85,16 +85,29 @@ while running:
 
            
 
-    if not change == zlist:
+    if not change == z:
         scrn.blit(dialog, (0, 0))
         scrn.blit(portrait, (74, 86))
+        print(zlist)
+        print(change)
+        if len(z) > 25:
+            for i in range(len(z)):
+                if (i <= len(z)- 5):
+                    if i >= 20:
+                        blist.append(zlist[i])
+            for i in range(len(z)):
+                if (i <= len(z) - 5):
+                    if i > 20:
+                        del zlist[20]
+                        change = z
+        change = z
         dialogs = 1
         print_string(zlist)
         dialogs = 2
         print_string(blist)
         dialogs = 3
         print_string(alist)
-        change = zlist
+        change = z
 
 
     
