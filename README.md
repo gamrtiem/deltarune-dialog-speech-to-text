@@ -20,7 +20,7 @@ if you want to use it for recording videos/streaming make sure to chroma key out
 hotkeys for icons coming soon tm
 
 TODO:
-- line break automatically
-- little sound for the dialog per letter like in game
+- line break automatically (currently only 2 line breaks and done pretty poorly so i might change it to not be later)
+- little sound for the dialog per letter like in game (done)
 - hotkeys to change icons
 - polish
