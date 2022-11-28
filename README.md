@@ -7,15 +7,15 @@ a speech to text in the form of a deltarune dialog box !
 
 python - https://www.python.org/downloads/release/python-3010/ (im not sure how newer versions of python will work)
 
-pip install commands:
+- pip install commands:
 
-pip install pygame
+- pip install pygame
 
-pip install vosk
+- pip install vosk
 
-pip install keyboard
+- pip install keyboard
 
-pip install pyaudio
+- pip install pyaudio
 
 
 
