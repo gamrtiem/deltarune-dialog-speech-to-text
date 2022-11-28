@@ -1,11 +1,16 @@
 # deltarune-dialog-speech-to-text
 a speech to text in the form of a deltarune dialog box !
 
-!!! YOU NEED TO INSTALL PYTHON AND PYGAME FOR THIS TO WORK !!!
+!!! YOU NEED TO INSTALL PYTHON AND SOME OTHER STUFF FOR THIS TO WORK !!!
 
-python - https://www.python.org/downloads/release/python-3110/
+python - https://www.python.org/downloads/release/python-3010/ (im not sure how newer versions of python will work)
 
-pygame - just run "pip3 install pygame" in console
+pip install commands:
+
+pip install pygame
+pip install vosk
+pip install keyboard
+pip install pyaudio
 
 
 
