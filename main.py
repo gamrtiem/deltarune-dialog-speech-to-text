@@ -7,7 +7,7 @@ pygame.init()
 
 x = 1334
 y = 376
-z = "123456789012345678901234567890"
+z = "* this is a very long sentence for testing strange stuff and other stuff it keep on going "
 linebreak = 0
 n = "* "
 b = ""
@@ -65,7 +65,9 @@ while running:
            if dialogs == 1:
              scrn.blit(text, (337,64))
            if dialogs == 2:
-             scrn.blit(text, (337,164))
+             scrn.blit(text, (347,144))
+           if dialogs == 3:
+             scrn.blit(text, (347,224))
            print(k)
            pygame.display.update()
            mixer.music.play()
@@ -90,16 +92,19 @@ while running:
         scrn.blit(portrait, (74, 86))
         print(zlist)
         print(change)
-        if len(z) > 25:
+        blist.append("  ")
+        alist.append("  ")
+        if len(z) > 20:
             for i in range(len(z)):
-                if (i <= len(z)- 5):
-                    if i >= 20:
-                        blist.append(zlist[i])
+                if i >= 20 and not i >= 40:
+                    print(i)
+                    blist.append(zlist[i])
             for i in range(len(z)):
-                if (i <= len(z) - 5):
-                    if i > 20:
-                        del zlist[20]
-                        change = z
+                if i >= 40 and not i >= 60:
+                    alist.append(zlist[i])
+            for i in range(len(z)):
+                if i > 20:
+                    del zlist[20]
         change = z
         dialogs = 1
         print_string(zlist)
@@ -108,7 +113,9 @@ while running:
         dialogs = 3
         print_string(alist)
         change = z
-
+        print(str(zlist))
+        print(str(blist))
+        print(str(alist))
 
     
 
