@@ -3,6 +3,7 @@ from vosk import Model, KaldiRecognizer
 import pyaudio
 import pygame
 import time
+import keyboard
 pygame.init()
 
 x = 1334
@@ -14,6 +15,7 @@ b = ""
 a = ""
 k = ""
 change = ""
+portraitImage = 1
 
 pygame.display.set_mode((x,y))
 
@@ -78,14 +80,53 @@ while running:
            
         k = ""
         o = ""
+    
+
+        #optimized code hours right here
+    if keyboard.is_pressed("1"):
+        portraitImage = 1
+        print("1")
+    elif keyboard.is_pressed("2"):
+        portraitImage = 2
+        print("2")
+    elif keyboard.is_pressed("3"):
+        portraitImage = 3
+        print("3")
+    elif keyboard.is_pressed("4"):
+        portraitImage = 4
+        print("4")
+    elif keyboard.is_pressed("5"):
+        portraitImage = 5
+        print("5")
+    elif keyboard.is_pressed("6"):
+        portraitImage = 6
+        print("6")
+
+    if portraitImage == 1:
+        portrait = pygame.image.load("images\\ralsei_idle.png").convert()
+        portrait = pygame.transform.scale(portrait, (262, 220))
+    elif portraitImage == 2:
+        portrait = pygame.image.load("images\\ralsei_happy.png").convert()
+        portrait = pygame.transform.scale(portrait, (262, 220))
+    elif portraitImage == 3:
+        portrait = pygame.image.load("images\\ralsei_blush.png").convert()
+        portrait = pygame.transform.scale(portrait, (262, 220))
+    elif portraitImage == 4:
+        portrait = pygame.image.load("images\\ralsei_worry.png").convert()
+        portrait = pygame.transform.scale(portrait, (262, 220))
+    elif portraitImage == 5:
+        portrait = pygame.image.load("images\\ralsei_what.png").convert()
+        portrait = pygame.transform.scale(portrait, (262, 220))
+    elif portraitImage == 6:
+        portrait = pygame.image.load("images\\ralsei_smug.png").convert()
+        portrait = pygame.transform.scale(portrait, (262, 220))
+
 
     scrn.blit(portrait, (74, 86))
-
     zlist = list(z)
     blist = list(b)
     alist = list(a)
 
-           
 
     if not change == z:
         scrn.blit(dialog, (0, 0))
