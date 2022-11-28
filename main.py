@@ -20,7 +20,8 @@ portraitImage = 1
 pygame.display.set_mode((x,y))
 
 scrn = pygame.display.set_mode((x, y))
-	
+scrn2 = pygame.display.set_mode((x, y))
+
 portrait = pygame.image.load("images\\ralsei_idle.png").convert()
 portrait = pygame.transform.scale(portrait, (262, 220))
 scrn.blit(portrait, (91, 85))
