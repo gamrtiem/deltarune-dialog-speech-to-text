@@ -20,16 +20,15 @@ portraitImage = 1
 pygame.display.set_mode((x,y))
 
 scrn = pygame.display.set_mode((x, y))
-scrn2 = pygame.display.set_mode((x, y))
 
-portrait = pygame.image.load("images\\ralsei_idle.png").convert()
+portrait = pygame.image.load("ralsei_idle.png").convert()
 portrait = pygame.transform.scale(portrait, (262, 220))
 scrn.blit(portrait, (91, 85))
 
-dialog = pygame.image.load("images\\dialog.png").convert()
+dialog = pygame.image.load("dialog.png").convert()
 scrn.blit(dialog, (0, 0))
 
-font_1 = pygame.font.Font("font\\determinationMono.ttf", 59)
+font_1 = pygame.font.Font("determinationMono.ttf", 59)
 
 
 model = Model(r"vosk-model-small-en-us-0.15")
@@ -41,7 +40,7 @@ stream = mic.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, fr
 stream.start_stream()
     
 mixer.init()
-mixer.music.load("images\\ralsei_snd.wav")
+mixer.music.load("ralsei_snd.wav")
 mixer.music.set_volume(0.7)
 
 
@@ -84,22 +83,22 @@ while running:
     
 
         #optimized code hours right here
-    if keyboard.is_pressed("1"):
+    if keyboard.is_pressed("ctrl+1"):
         portraitImage = 1
         print("1")
-    elif keyboard.is_pressed("2"):
+    elif keyboard.is_pressed("ctrl+2"):
         portraitImage = 2
         print("2")
-    elif keyboard.is_pressed("3"):
+    elif keyboard.is_pressed("ctrl+3"):
         portraitImage = 3
         print("3")
-    elif keyboard.is_pressed("4"):
+    elif keyboard.is_pressed("ctrl+4"):
         portraitImage = 4
         print("4")
-    elif keyboard.is_pressed("5"):
+    elif keyboard.is_pressed("ctrl+5"):
         portraitImage = 5
         print("5")
-    elif keyboard.is_pressed("6"):
+    elif keyboard.is_pressed("ctrl+6"):
         portraitImage = 6
         print("6")
 
@@ -129,7 +128,7 @@ while running:
     alist = list(a)
 
 
-    if not change == z:
+    if not change == z and not z == "* huh":
         scrn.blit(dialog, (0, 0))
         scrn.blit(portrait, (74, 86))
         print(zlist)
