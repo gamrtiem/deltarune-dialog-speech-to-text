@@ -1,5 +1,5 @@
 from pygame import mixer
-from vosk import Model, KaldiRecognizer
+import speech_recognition as sr
 import pyaudio
 import pygame
 import time
@@ -16,6 +16,11 @@ a = ""
 k = ""
 change = ""
 portraitImage = 1
+zstring = ""
+bstring = ""
+astring = ""
+counter = ""
+oneusevariable = 1
 
 pygame.display.set_mode((x,y))
 
@@ -33,11 +38,6 @@ font_1 = pygame.font.Font("determinationMono.ttf", 59)
 pygame.display.set_caption('speech to deltarune')
 pygame_icon = pygame.image.load('deltarune.png')
 pygame.display.set_icon(pygame_icon)
-
-
-model = Model(r"vosk-model-small-en-us-0.15")
-
-recognizer = KaldiRecognizer(model, 16000)
     
 mic = pyaudio.PyAudio()
 stream = mic.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=8192)
@@ -49,21 +49,28 @@ mixer.music.set_volume(0.7)
 
 
 g = 0 
+r=sr.Recognizer()
+with sr.Microphone() as source:
+    r.adjust_for_ambient_noise(source,duration=1)
 
 pygame.display.flip()
 running  = True
-while running:  
+while running:
+    
+    if g == 3:
+        with sr.Microphone() as source:
+            print("say anything : ")
+            audio= r.listen(source)
+            try:
+                z = r.recognize_google(audio)
+                z = "* " + z
+            except:
+                z = "* could not recognize "
 
-    data = stream.read(8192)
-    if recognizer.AcceptWaveform(data):
-        text2 = recognizer.Result()
-        print(f"' {text2[14:-3]} '")
-        z = "*" + f" {text2[14:-3]}" 
-        print(len(z) - 2)
 
     def print_string(sentence):
         count = 0
-
+        #sentence = str(sentence)
         while count < len(sentence):
            global k
            k = k + sentence[count]
@@ -72,9 +79,9 @@ while running:
            if dialogs == 1:
              scrn.blit(text, (337,64))
            if dialogs == 2:
-             scrn.blit(text, (347,144))
+             scrn.blit(text, (407,144))
            if dialogs == 3:
-             scrn.blit(text, (347,224))
+             scrn.blit(text, (407,224))
            print(k)
            pygame.display.update()
            mixer.music.play()
@@ -126,7 +133,7 @@ while running:
         #sadly the end of optimized code hours
 
     scrn.blit(portrait, (74, 86))
-    zlist = list(z)
+    zlist = z.split()
     blist = list(b)
     alist = list(a)
 
@@ -134,37 +141,57 @@ while running:
     if not change == z and not z == "* huh":
         scrn.blit(dialog, (0, 0))
         scrn.blit(portrait, (74, 86))
-        print(zlist)
-        print(change)
-        blist.append("  ")
-        alist.append("  ")
-        if len(z) > 20:
-            for i in range(len(z)):
-                if i >= 20 and not i >= 40:
-                    blist.append(zlist[i])
-            for i in range(len(z)):
-                if i >= 40 and not i >= 60:
-                    alist.append(zlist[i])
-            for i in range(len(z)):
-                if i >= 20:
-                    del zlist[20]
+        for i in range(1, len(z.split())):
+            zlist.insert(i + (i - 1), " ")
+        for i in range(len(zlist)):
+            counter = counter + zlist[i]
+            if len(counter) >= 25 and not len(counter) >= 50:
+                blist.append(zlist[i])
+            if len(counter) >= 50 and not len(counter) >= 75:
+                alist.append(zlist[i])
+        counter = ""
+        for i in range(len(zlist)):
+            if not len(counter) >=25:
+                counter = counter + zlist[i]
+            if len(counter) >= 25:
+                if i < len(zlist):
+                    del zlist[i]
+        counter = ""
+
+
+
+        for i in range(len(zlist)):
+            zstring = zstring + zlist[i]
+        for i in range(len(blist)):
+            bstring = bstring + blist[i]
+        for i in range(len(alist)):
+            astring = astring + alist[i]
+
         change = z
         dialogs = 1
-        print_string(zlist)
+        print_string(zstring)
         dialogs = 2
-        print_string(blist)
+        print_string(bstring)
         dialogs = 3
-        print_string(alist)
+        print_string(astring)
         change = z
-        print(str(zlist))
-        print(str(blist))
-        print(str(alist))
+        zstring = ""
+        bstring = ""
+        astring = ""
+
+        print(zstring)
+        print(bstring)
+        print(astring)
         time.sleep(1)
+        counter = ""
 
     
 
     k = ""
 
+
+    if g == 2:
+        g = 3
     if g == 1:
         z = "* have fun!"
         g = 2
@@ -172,6 +199,11 @@ while running:
         z = "* remember to hold  them down or else   they wont go through"
         g = 1
     
+
+
+
+
+
     for event in pygame.event.get():  
         if event.type == pygame.QUIT:  
             running = False
